@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/sytle.css" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  </head>
+
+  <body
+    class="font-['Poppins'] bg-black flex justify-center items-center h-screen m-0 md:block md:bg-transparent md:h-auto"
+  >
+    <style>
+      @keyframes Masuk {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .masuk {
+        animation: Masuk 2s ease-in-out;
+      }
+
+      .font-serif-custom {
+        font-family: "Times New Roman", Times, serif;
+      }
+    </style>
+
+    <div id="videoContainer" class="fixed inset-0 z-50 hidden">
+      <video
+        id="myVideo"
+        class="w-full h-full object-cover"
+        playsinline
+        controls
+      >
+        <source src="./foto/oneforall.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <button
+        id="Back"
+        class="cursor-pointer bg-black/50 text-white rounded-full p-2 absolute top-5 left-5 hover:bg-black/70 transition md:bg-transparent md:rounded-none md:p-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-8 h-8 md:hidden"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"
+          />
+        </svg>
+
+        <img src="./foto/back.png" alt="back" class="h-8 w-8 hidden md:block" />
+      </button>
+    </div>
+
+    <div
+      id="fadeOverlay"
+      class="fixed inset-0 bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-1000"
+    ></div>
+
+    <section
+      class="relative w-full max-w-[400px] h-full sm:h-[85vh] sm:rounded-3xl overflow-hidden md:bg-[url('./foto/interstellar.jpeg')] bg-[url('./foto/landscape.jpeg')] bg-cover bg-center shadow-[0_0_50px_rgba(0,0,0,0.5)] ring-1 ring-white/10 md:w-full md:max-w-none md:h-screen md:rounded-none md:shadow-none md:ring-0"
+    >
+      <div
+        class="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent md:bg-linear-to-r md:from-black/90 md:to-transparent"
+      ></div>
+
+      <div
+        class="absolute top-6 left-6 z-20 md:relative md:z-10 md:top-auto md:left-auto"
+      >
+        <img
+          src="./foto/netflix.png"
+          class="h-8 md:h-[150px] md:mb-5"
+          alt="Logo"
+        />
+      </div>
+
+      <div
+        class="absolute bottom-0 left-0 right-0 z-20 px-6 pb-10 flex flex-col items-center text-center w-full masuk md:inset-0 md:justify-center md:items-start md:px-0 md:pb-0 md:text-left"
+      >
+        <h1
+          class="text-white text-3xl font-serif-custom uppercase tracking-widest drop-shadow-lg mb-2 md:text-6xl md:ml-12 md:font-semibold md:font-['Poppins'] md:normal-case md:tracking-normal md:drop-shadow-none md:mb-0"
+        >
+          interstellar
+        </h1>
+
+        <p
+          class="text-gray-300 text-xs line-clamp-3 mb-6 px-2 md:mt-5 md:max-w-xl md:ml-12 md:text-white md:text-2xl md:px-0 md:line-clamp-none md:mb-0"
+        >
+          The journey of the foreign threat massacare has come, Owo, Strongest
+          man in Indonesia trying to get rid of them with his cold hands
+        </p>
+
+        <div
+          class="flex w-full gap-3 md:flex-col md:ml-12 md:mt-4 md:w-auto md:gap-0"
+        >
+          <div class="contents md:flex md:justify-start">
+            <button
+              id="Play"
+              class="cursor-pointer flex-1 bg-white text-black py-2.5 rounded text-sm font-bold flex items-center justify-center gap-2 hover:bg-gray-200 transition md:flex-none md:transition-all md:font-semibold md:text-2xl md:px-12 md:py-3 md:rounded-xs md:hover:bg-white/80 md:mr-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-5 h-5 md:hidden"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <img
+                src="./foto/play-button-arrowhead.png"
+                alt="play"
+                class="hidden md:block h-6 w-6"
+              />
+              <span class="md:hidden">Putar</span>
+              <span class="hidden md:inline">Play</span>
+            </button>
+
+            <button
+              id="More"
+              class="cursor-pointer flex-1 bg-[#333]/90 text-white py-2.5 rounded text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#333]/70 transition backdrop-blur-sm md:flex-none md:bg-white/50 md:backdrop-blur-none md:px-14 md:py-3 md:rounded-xs md:hover:bg-white/30 md:text-2xl"
+            >
+              <img src="./foto/info.png" alt="play" class="h-8 w-8" />
+              <span class="md:hidden">More</span>
+              <span class="hidden md:inline">More</span>
+            </button>
+          </div>
+          <div
+            class="absolute inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50 hidden p-6 md:fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:bg-white/30 md:backdrop-blur-none md:p-20 md:max-w-lg md:inset-auto md:rounded-lg"
+            id="details"
+          >
+            <div class="text-center md:contents">
+              <h2 class="text-2xl font-bold text-white mb-4 md:hidden">
+                Synopsis
+              </h2>
+
+              <p
+                class="text-gray-300 text-sm leading-relaxed mb-8 md:text-2xl md:text-white md:mb-0"
+              >
+                The journey of the foreign threat massacre has come. Owo, the
+                strongest man in Indonesia, is trying to get rid of them with
+                his cold hands.
+              </p>
+
+              <button
+                id="closeDtl"
+                class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-gray-200 transition md:bg-transparent md:fixed md:top-5 md:left-5 md:p-2 md:rounded-none md:hover:bg-transparent"
+              >
+                <span class="md:hidden">Close</span>
+                <img
+                  src="./foto/back.png"
+                  alt="back"
+                  class="hidden md:block h-8 w-8"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/script.js"></script>
+    <script>
+      const player = new Plyr("#myVideo");
+    </script>
+  </body>
+</html>

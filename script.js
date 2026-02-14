@@ -1,27 +1,40 @@
 const playBtn = document.getElementById("Play");
 const video = document.getElementById("myVideo");
+const videoContainer = document.getElementById("videoContainer");
 const overlay = document.getElementById("fadeOverlay");
 const mainContent = document.querySelector("section");
 const backBtn = document.getElementById("Back");
 const moreBtn = document.getElementById("More");
 const showDetails = document.getElementById("details");
 let closeDetails = document.getElementById("closeDtl");
+const player = new Plyr("#myVideo", {
+  controls: [
+    "play-large",
+    "play",
+    "progress",
+    "current-time",
+    "mute",
+    "volume",
+    "fullscreen",
+  ],
+  hideControls: true,
+});
+
 playBtn.addEventListener("click", () => {
   overlay.classList.replace("opacity-0", "opacity-100");
   setTimeout(() => {
     mainContent.style.display = "none";
-    video.classList.remove("hidden");
-    backBtn.classList.remove("hidden");
-    video.play();
+    videoContainer.classList.remove("hidden");
+    player.play();
     overlay.classList.replace("opacity-100", "opacity-0");
   }, 1000);
 });
 
 backBtn.addEventListener("click", () => {
-  video.pause();
+  player.pause();
+  player.restart();
   video.currentTime = 0;
-  video.classList.add("hidden");
-  backBtn.classList.add("hidden");
+  videoContainer.classList.add("hidden");
   mainContent.style.display = "block";
 });
 
