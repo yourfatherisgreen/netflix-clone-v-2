@@ -21,6 +21,12 @@ const player = new Plyr("#myVideo", {
 });
 
 playBtn.addEventListener("click", () => {
+  if (window.innerWidth < 768) {
+    videoContainer.classList.add("force-landscape");
+  } else {
+    videoContainer.classList.remove("force-landscape");
+  }
+
   overlay.classList.replace("opacity-0", "opacity-100");
   setTimeout(() => {
     mainContent.style.display = "none";
@@ -30,11 +36,17 @@ playBtn.addEventListener("click", () => {
   }, 1000);
 });
 
+// Rely strictly on custom CSS rotation on mobile to avoid native OS Fullscreen blocks.
+
 backBtn.addEventListener("click", () => {
   player.pause();
   player.restart();
   video.currentTime = 0;
+  if (player.fullscreen.enabled && player.fullscreen.active) {
+    player.fullscreen.exit();
+  }
   videoContainer.classList.add("hidden");
+  videoContainer.classList.remove("force-landscape");
   mainContent.style.display = "block";
 });
 
