@@ -23,6 +23,7 @@ const player = new Plyr("#myVideo", {
 playBtn.addEventListener("click", () => {
   if (window.innerWidth < 768) {
     videoContainer.classList.add("force-landscape");
+    alert("Tolong matikan kunci orientasi untuk tampilan penuh");
   } else {
     videoContainer.classList.remove("force-landscape");
   }
